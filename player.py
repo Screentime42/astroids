@@ -23,7 +23,7 @@ class Player(CircleShape):
 
 
    def update(self, dt):
-      self.shoot_timer -= dt
+      self.shoot_timer -= dt # reduce shoot timer by tick rate
       keys = pygame.key.get_pressed()
 
       if keys[pygame.K_a]: #press A to rotate left
@@ -47,6 +47,6 @@ class Player(CircleShape):
    def shoot(self):
       if self.shoot_timer > 0:
          return
-      self.shoot_timer = PLAYER_SHOOT_COOLDOWN
+      self.shoot_timer = PLAYER_SHOOT_COOLDOWN # sets shoot_timer to cooldown set in constants.py
       shot = Shot(self.position.x, self.position.y)
       shot.velocity = pygame.Vector2(0, 1).rotate(self.rotation) * PLAYER_SHOOT_SPEED
